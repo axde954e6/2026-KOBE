@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="神戶 2026 五日自由行靜態行程表">
+  <title>神戶 2026｜五日自由行</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #2d2420;
+      --muted: #7d6c60;
+      --line: #e4d7c3;
+      --paper: #f6efe3;
+      --card: #fffaf1;
+      --mist: #f6e2b8;
+      --sky: #dfeadd;
+      --road: #b3261e;
+      --accent: #2f6f5e;
+      --night: #3b1f1b;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .hero {
+      height: clamp(110px, 20vw, 240px);
+      display: flex;
+      align-items: flex-end;
+      padding: 0 18px 14px;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(8,27,32,0) 45%, rgba(8,27,32,.78) 100%),
+        url("docs/kobe-hero.webp?v=20261004") center 35% / cover no-repeat;
+    }
+    .hero-inner { width: 100%; }
+    .hero .kicker, .hero .summary { display: none; }
+    .kicker { margin: 0 0 10px; font-size: .78rem; font-weight: 850; letter-spacing: .18em; opacity: .8; }
+    h1 { margin: 0 0 4px; font-size: clamp(1.15rem, 2.6vw, 1.7rem); line-height: 1.15; text-shadow: 0 1px 4px rgba(0,0,0,.45); }
+    .subtitle { margin: 0; color: #fff; font-size: clamp(.7rem, 1.4vw, .9rem); text-shadow: 0 1px 3px rgba(0,0,0,.5); }
+    .summary { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; margin-top: 18px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 9px 11px;
+      border: 1px solid rgba(255,255,255,.38);
+      border-radius: 8px;
+      background: rgba(255,255,255,.13);
+      backdrop-filter: blur(10px);
+      font-size: .92rem;
+    }
+    main { width: min(980px, 100%); margin: 0 auto; padding: 18px 14px 64px; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      margin: 0 -14px 18px;
+      display: flex;
+      gap: 8px;
+      padding: 12px 14px 9px;
+      overflow-x: scroll;
+      scrollbar-color: #b3a391 transparent;
+      scrollbar-width: thin;
+      white-space: nowrap;
+      background: rgba(246,239,227,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .nav::-webkit-scrollbar { height: 8px; }
+    .nav::-webkit-scrollbar-thumb { border-radius: 999px; background: #b3a391; }
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      min-height: 46px;
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--card);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+    .nav a span { margin-left: 5px; color: var(--muted); font-weight: 650; }
+    .notice { margin: 0 0 18px; padding: 12px 13px; border-left: 4px solid var(--accent); background: #e6efe4; }
+    .notice strong { color: var(--night); }
+    .stay-section { margin: 0 0 20px; padding: 16px 0 18px; border-bottom: 1px solid var(--line); }
+    .stay-section h2 { margin: 0 0 10px; font-size: 1.2rem; color: var(--road); }
+    .price-summary { margin: 0 0 16px; color: var(--muted); }
+    .price-summary > span { margin-right: 16px; color: var(--ink); font-size: .82rem; font-weight: 900; }
+    .price-summary > strong { color: var(--night); font-size: 1.18rem; }
+    .stay-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; }
+    .stay-card, .item { padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); box-shadow: 0 2px 8px rgba(59,31,27,.06); }
+    .stay-card { padding: 16px; }
+    .stay-title { margin-bottom: 5px; }
+    .stay-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+    .stay-heading strong { font-size: 1.08rem; }
+    .stay-booking-row { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 7px; }
+    .booking-source { color: var(--ink); font-size: .72rem; font-weight: 850; }
+    .payment-status { display: inline-flex; padding: 2px 6px; border-radius: 999px; background: #f6e2b8; color: #8a5a0a; font-size: .66rem; font-weight: 900; }
+    .payment-status.unpaid { background: #f9d9d2; color: #9e2b25; }
+    .stay-card p { margin: 0; color: var(--muted); font-size: .93rem; }
+    .stay-card .stay-facts { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; color: var(--muted); font-size: .75rem; }
+    .stay-facts span { margin-left: auto; text-align: right; }
+    .stay-facts strong { color: var(--night); font-size: .86rem; }
+    .badge { flex: 0 0 auto; padding: 3px 8px; border-radius: 999px; background: var(--mist); color: #8a5a0a; font-size: .76rem; font-weight: 900; }
+    .booking-section { margin: 0 0 20px; padding: 0 0 20px; border-bottom: 1px solid var(--line); }
+    .booking-section h2 { margin: 0 0 10px; font-size: 1.2rem; color: var(--road); }
+    .booking-grid { display: grid; gap: 10px; }
+    .booking-card { padding: 12px; border: 1px solid #e9bfb4; border-radius: 8px; background: #fff4ee; }
+    .booking-card strong { color: var(--night); }
+    .booking-card p { margin: 5px 0 0; color: var(--muted); font-size: .9rem; }
+    .pending { display: inline-flex; margin-left: 7px; padding: 3px 8px; border-radius: 999px; background: #f9d9d2; color: #9e2b25; font-size: .76rem; font-weight: 900; }
+    .booking-date { display: inline-flex; margin-left: 7px; padding: 3px 8px; border-radius: 999px; background: #f6e2b8; color: #8a5a0a; font-size: .76rem; font-weight: 900; }
+    .day { padding: 22px 0; border-top: 1px solid var(--line); scroll-margin-top: 64px; }
+    .day h2 { margin: 0 0 6px; color: var(--night); font-size: 1.45rem; }
+    .route { margin: 0 0 13px; color: var(--muted); font-weight: 650; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 14px; }
+    .tag { padding: 4px 8px; border-radius: 999px; background: var(--sky); color: #2f5f4c; font-size: .78rem; font-weight: 800; }
+    .tag.city { background: #f9d9d2; color: #9e2b25; }
+    .tag.sleep { background: #ece2d2; color: var(--night); }
+    .items { display: grid; gap: 10px; }
+    .topline { display: flex; gap: 10px; align-items: flex-start; }
+    .time { flex: 0 0 auto; min-width: 82px; color: var(--road); font-weight: 900; font-size: .92rem; }
+    .time.reserved { color: var(--accent); }
+    .what { flex: 1 1 auto; min-width: 0; font-weight: 900; }
+    .flight-card .topline { align-items: center; }
+    .flight-card .time { min-width: 0; padding: 5px 10px; border-radius: 999px; background: #b3261e; color: #fff3d6; font-size: 1rem; }
+    .flight-no { display: inline-flex; margin-left: 8px; padding: 3px 9px; border: 2px solid #b3261e; border-radius: 8px; color: #b3261e; font-size: .92rem; white-space: nowrap; }
+    .note { margin: 6px 0 0; color: var(--muted); font-size: .93rem; }
+    .stop-list { margin-top: 12px; border-top: 1px solid var(--line); }
+    .stop { display: grid; grid-template-columns: 82px minmax(0,1fr); gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .stop:last-child { padding-bottom: 0; border-bottom: 0; }
+    .stop-time { color: var(--road); font-weight: 900; font-size: .86rem; }
+    .stop strong { display: block; margin-bottom: 2px; }
+    .stop p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .links { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+    .btn { min-height: 36px; display: inline-flex; align-items: center; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: #f1e6d3; color: var(--night); text-decoration: none; font-weight: 800; font-size: .86rem; }
+    .top-button { position: fixed; right: 16px; bottom: 16px; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--accent); color: white; text-decoration: none; box-shadow: 0 4px 14px rgba(24,42,74,.26); }
+    @media (min-width:720px) { .summary { grid-template-columns: repeat(4,minmax(0,1fr)); } }
+    @media (max-width:820px) { .stay-grid { grid-template-columns: 1fr; } }
+    @media (max-width:650px) {
+      .price-summary > span { display: block; margin: 0 0 3px; }
+      .stay-card .stay-facts { align-items: baseline; flex-direction: row; gap: 6px; white-space: nowrap; font-size: .7rem; }
+      .stay-facts span { margin-left: auto; text-align: right; }
+      .stay-facts strong { font-size: .8rem; }
+      .topline { display: grid; grid-template-columns: 82px 1fr; }
+      .stop { grid-template-columns: 70px minmax(0,1fr); gap: 8px; }
+      .flight-card .topline { display: flex; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="kicker">KOBE TRIP 2026</p>
+      <h1>神戶 5 日自由行</h1>
+      <p class="subtitle">2026/11/01–11/05｜住元町 Dormy Inn，神戶市區、有馬溫泉與姬路城。</p>
+    </div>
+  </header>
+
+  <main>
+    <nav class="nav" aria-label="行程日期快速跳轉">
+      <a href="#stay">🏨 住宿</a>
+      <a href="#tickets">🎫 待確認</a>
+      <a href="#d1101">11/01 日<span>抵達</span></a>
+      <a href="#d1102">11/02 一<span>北野</span></a>
+      <a href="#d1103">11/03 二<span>有馬</span></a>
+      <a href="#d1104">11/04 三<span>姬路</span></a>
+      <a href="#d1105">11/05 四<span>回程</span></a>
+      <a href="#notes">📌 提醒</a>
+    </nav>
+
+    <div class="notice"><strong>航班說明：</strong>航班號與時刻依星宇航空 2026 年 8–10 月班表暫列（JX1834／JX1835）；11 月屬冬季班表，請以機票／訂位紀錄為準再更新。</div>
+
+    <section class="stay-section" id="stay">
+      <h2>住宿</h2>
+      <p class="price-summary"><span>住宿</span>1 間飯店・4 晚合計 <strong>¥57,000</strong>（2 人）</p>
+      <div class="stay-grid">
+        <article class="stay-card">
+          <div class="stay-title"><div class="stay-heading"><strong>天然溫泉 浪漫湯 Dormy Inn 神戶元町</strong><span class="badge">元町</span></div><div class="stay-booking-row"><span class="booking-source">訂房來源待補</span><span class="payment-status">2 人合計</span></div></div>
+          <p class="stay-facts">11/01－11/05｜4 晚<span><strong>¥57,000</strong></span></p>
+          <p class="note">入住 15:00・退房 11:00</p>
+          <div class="links"><a class="btn" href="https://dormy-hotels.com/dormyinn/hotels/kobe/" target="_blank" rel="noreferrer">官方網站</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%BC%E3%83%9F%E3%83%BC%E3%82%A4%E3%83%B3%E7%A5%9E%E6%88%B8%E5%85%83%E7%94%BA" target="_blank" rel="noreferrer">Google Maps</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="booking-section" id="tickets">
+      <h2>待確認與預約</h2>
+      <div class="booking-grid">
+        <article class="booking-card">
+          <strong>去回程航班號與時刻</strong><span class="pending">待確認</span>
+          <p>目前暫列 JX1834（桃園 08:05 → 神戶 11:45）、JX1835（神戶 12:45 → 桃園 14:45）。冬季班表的航班號與時間可能調整，請對照機票後更新。</p>
+          <div class="links"><a class="btn" href="https://www.starlux-airlines.com/zh-TW/timetable" target="_blank" rel="noreferrer">星宇航空班機時刻</a></div>
+        </article>
+        <article class="booking-card">
+          <strong>11/02 晚上｜神戶牛晚餐</strong><span class="pending">尚未訂位</span>
+          <p>店家未定；三宮、元町一帶的鐵板燒名店晚餐時段建議提早訂位。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="day" id="d1101">
+      <h2>2026/11/01（日）｜抵達神戶・元町與港區夜景</h2>
+      <p class="route">桃園 → 神戶機場 → 三宮 → 元町飯店 → 南京町 → 美利堅公園 → Harborland</p>
+      <div class="meta-row"><span class="tag city">抵達日</span><span class="tag">Port Liner</span><span class="tag sleep">元町住宿</span></div>
+      <div class="items">
+        <article class="item flight-card"><div class="topline"><span class="time">08:05–11:45</span><span class="what">搭乘飛機 <span class="flight-no">✈ JX1834</span> <span class="pending">航班待確認</span></span></div><p class="note">桃園飛往神戶；抵達後辦理入境並領取行李。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Taiwan+Taoyuan+International+Airport" target="_blank" rel="noreferrer">桃園機場 Google Maps</a></div></article>
+        <article class="item"><div class="topline"><span class="time">12:30–13:15</span><span class="what">Port Liner：神戶機場 → 三宮 → 元町</span></div><p class="note">神戶機場站搭 Port Liner 約 18 分鐘到三宮，再轉 JR／阪神一站到元町，或直接搭計程車到飯店。</p></article>
+        <article class="item"><div class="topline"><span class="time">13:15–13:45</span><span class="what">Dormy Inn 神戶元町寄放行李</span></div><p class="note">元町站步行約 4 分鐘。入住時間為 15:00，先寄行李輕裝出門。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%89%E3%83%BC%E3%83%9F%E3%83%BC%E3%82%A4%E3%83%B3%E7%A5%9E%E6%88%B8%E5%85%83%E7%94%BA" target="_blank" rel="noreferrer">Google Maps</a></div></article>
+        <article class="item"><div class="topline"><span class="time">下午</span><span class="what">南京町午餐・元町商店街</span></div><p class="note">飯店步行可到；中華街小吃當午餐，再沿元町商店街散步。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Nankinmachi+Kobe" target="_blank" rel="noreferrer">南京町 Google Maps</a></div></article>
+        <article class="item"><div class="topline"><span class="time">傍晚～晚上</span><span class="what">美利堅公園・神戶港塔・Harborland</span></div><p class="note">黃昏走到美利堅公園看 BE KOBE 與港塔，入夜後到 Harborland／umie MOSAIC 看夜景、吃晚餐，再步行回飯店泡湯。</p><p class="note"><strong>建議拍照點：</strong>封面那種「港塔＋海洋博物館＋東方飯店」的港灣全景，要從對岸 Harborland 的高濱岸壁或 MOSAIC 海側露台往美利堅公園方向拍；日落後 20–30 分鐘天空還帶藍色時最好看。BE KOBE 字樣則在美利堅公園內。</p><div class="links"><a class="btn" href="https://maps.app.goo.gl/EzjVC6xNgg8nNSsUA" target="_blank" rel="noreferrer">📷 港灣全景拍照點（高濱岸壁）</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=BE+KOBE+%E3%83%A2%E3%83%8B%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88+%E3%83%A1%E3%83%AA%E3%82%B1%E3%83%B3%E3%83%91%E3%83%BC%E3%82%AF" target="_blank" rel="noreferrer">📷 BE KOBE</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Meriken+Park+Kobe" target="_blank" rel="noreferrer">美利堅公園 Google Maps</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kobe+Harborland+umie+MOSAIC" target="_blank" rel="noreferrer">Harborland Google Maps</a></div></article>
+      </div>
+    </section>
+
+    <section class="day" id="d1102">
+      <h2>2026/11/02（一）｜北野異人館・布引香草園・神戶牛</h2>
+      <p class="route">元町 → 北野異人館 → 布引香草園纜車 → 三宮 → 神戶牛晚餐 → 飯店</p>
+      <div class="meta-row"><span class="tag city">北野・三宮</span><span class="tag">步行</span><span class="tag">神戶牛晚餐</span><span class="tag sleep">元町住宿</span></div>
+      <div class="items">
+        <article class="item"><div class="topline"><span class="time">早上</span><span class="what">北野異人館街</span></div><p class="note">由三宮往山側步行上坡，逛風見雞館、萌黃之館一帶的洋館與坡道街景。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kitano+Ijinkan+Kobe" target="_blank" rel="noreferrer">Google Maps</a></div></article>
+        <article class="item"><div class="topline"><span class="time">中午～下午</span><span class="what">神戶布引香草園・纜車</span></div><p class="note">從新神戶站旁搭纜車上山，在山頂用午餐、看神戶市景，再慢慢往下逛花園。</p><div class="links"><a class="btn" href="https://www.kobeherb.com/" target="_blank" rel="noreferrer">官方網站</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kobe+Nunobiki+Herb+Gardens" target="_blank" rel="noreferrer">Google Maps</a></div></article>
+        <article class="item"><div class="topline"><span class="time">傍晚</span><span class="what">三宮中心街・生田神社</span></div><p class="note">回到三宮逛街，順路參拜生田神社。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Ikuta+Shrine" target="_blank" rel="noreferrer">生田神社 Google Maps</a></div></article>
+        <article class="item"><div class="topline"><span class="time reserved">晚上</span><span class="what">神戶牛鐵板燒晚餐 <span class="pending">尚未訂位</span></span></div><p class="note">店家待定，訂位後補上時間與地點。</p></article>
+      </div>
+    </section>
+
+    <section class="day" id="d1103">
+      <h2>2026/11/03（二）｜有馬溫泉一日遊</h2>
+      <p class="route">元町 → 三宮 → 有馬溫泉 → 溫泉街散步・泡湯 → 三宮 → 飯店</p>
+      <div class="meta-row"><span class="tag city">有馬溫泉</span><span class="tag">文化之日（國定假日）</span><span class="tag sleep">元町住宿</span></div>
+      <div class="items">
+        <article class="item"><div class="topline"><span class="time">早上</span><span class="what">三宮 → 有馬溫泉</span></div><p class="note">可搭三宮出發的直達巴士，或地鐵＋神戶電鐵轉乘，約 30–45 分鐘。當天是國定假日，建議早點出發。</p></article>
+        <article class="item"><div class="topline"><span class="time">中午</span><span class="what">溫泉街散步・午餐</span></div><p class="note">湯本坂邊走邊吃炭酸煎餅、可樂餅；順遊瑞寶寺公園（11 月上旬楓葉可能剛開始轉紅）。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Arima+Onsen" target="_blank" rel="noreferrer">有馬溫泉 Google Maps</a></div></article>
+        <article class="item"><div class="topline"><span class="time">下午</span><span class="what">金之湯／銀之湯泡湯</span></div><p class="note">兩間公共浴場擇一或買共通券；假日人多，可能需要排隊。</p><div class="links"><a class="btn" href="https://arimaspa-kingin.jp/" target="_blank" rel="noreferrer">金之湯・銀之湯官方</a></div></article>
+        <article class="item"><div class="topline"><span class="time">傍晚</span><span class="what">返回三宮・晚餐</span></div><p class="note">回市區後在三宮或元町晚餐。</p></article>
+      </div>
+    </section>
+
+    <section class="day" id="d1104">
+      <h2>2026/11/04（三）｜姬路城・明石</h2>
+      <p class="route">元町 → 姬路城・好古園 → 明石魚棚商店街 → 舞子明石海峽大橋 → 飯店</p>
+      <div class="meta-row"><span class="tag city">姬路・明石</span><span class="tag">JR 新快速</span><span class="tag sleep">元町住宿</span></div>
+      <div class="items">
+        <article class="item"><div class="topline"><span class="time">早上</span><span class="what">JR 新快速前往姬路</span></div><p class="note">由三宮或神戶站搭新快速約 40 分鐘；出站後沿大手前通步行約 15–20 分鐘到姬路城。</p></article>
+        <article class="item"><div class="topline"><span class="time">上午～中午</span><span class="what">姬路城・好古園</span></div><p class="note">登天守閣約需 1.5–2 小時；可買姬路城＋好古園共通券，午餐在城前商店街解決。</p><div class="links"><a class="btn" href="https://www.city.himeji.lg.jp/castle/" target="_blank" rel="noreferrer">姬路城官方網站</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Himeji+Castle" target="_blank" rel="noreferrer">Google Maps</a></div></article>
+        <article class="item"><div class="topline"><span class="time">下午</span><span class="what">明石・魚棚商店街</span></div><p class="note">回程在明石下車，吃明石燒、逛魚棚商店街。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Uontana+Shopping+Street+Akashi" target="_blank" rel="noreferrer">Google Maps</a></div></article>
+        <article class="item"><div class="topline"><span class="time">傍晚</span><span class="what">舞子公園・明石海峽大橋夕景</span></div><p class="note">時間與體力允許再加；JR 舞子站下車即到，看完夕陽回元町。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Maiko+Park+Akashi+Kaikyo+Bridge" target="_blank" rel="noreferrer">Google Maps</a></div></article>
+      </div>
+    </section>
+
+    <section class="day" id="d1105">
+      <h2>2026/11/05（四）｜退房・返回台灣</h2>
+      <p class="route">元町 → 三宮 → 神戶機場 → 桃園</p>
+      <div class="meta-row"><span class="tag city">回程日</span><span class="tag">JX1835</span><span class="tag">神戶機場</span></div>
+      <div class="items">
+        <article class="item"><div class="topline"><span class="time">09:00 前</span><span class="what">Dormy Inn 神戶元町退房</span></div><p class="note">元町 → 三宮轉 Port Liner 到神戶機場，約 40 分鐘；目標 10:00 前抵達機場，報到後再逛伴手禮。</p></article>
+        <article class="item flight-card"><div class="topline"><span class="time">12:45–14:45</span><span class="what">搭乘飛機 <span class="flight-no">✈ JX1835</span> <span class="pending">航班待確認</span></span></div><p class="note">神戶飛往桃園，14:45 抵達台灣。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kobe+Airport" target="_blank" rel="noreferrer">神戶機場 Google Maps</a></div></article>
+      </div>
+    </section>
+
+    <section class="day" id="notes">
+      <h2>出發前提醒</h2>
+      <div class="items">
+        <article class="item"><strong>航班與訂位</strong><p class="note">確認冬季班表的航班號與時刻；神戶牛餐廳訂位後補上資訊。</p></article>
+        <article class="item"><strong>行李與網路</strong><p class="note">確認行李額度、旅遊保險、網卡與離線地圖。</p></article>
+      </div>
+    </section>
+  </main>
+  <a class="top-button" href="#" aria-label="回到頁面頂端">↑</a>
+</body>
+</html>
