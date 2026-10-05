@@ -144,6 +144,18 @@
     .stop p { margin: 0; color: var(--muted); font-size: .9rem; }
     .links { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
     .btn { min-height: 36px; display: inline-flex; align-items: center; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: #f1e6d3; color: var(--night); text-decoration: none; font-weight: 800; font-size: .86rem; }
+    .shopping-block { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+    .shopping-list { display: grid; gap: 12px; margin: 12px 0 0; padding: 0; list-style: none; }
+    .store-group { padding: 11px; border: 1px solid var(--line); border-radius: 8px; background: #fbf5ea; }
+    .store-group-title { color: var(--ink); }
+    .store-label { display: block; margin: 7px 0 6px; color: var(--muted); font-size: .8rem; font-weight: 900; }
+    .store-links { display: flex; flex-wrap: wrap; gap: 7px; }
+    .store-chip { display: inline-flex; align-items: center; min-height: 34px; padding: 6px 10px; border: 1px solid currentColor; border-radius: 999px; background: white; color: #245b66; font-size: .86rem; font-weight: 900; text-decoration: none; }
+    .store-chip::after { content: " ↗"; white-space: pre; }
+    .store-group.blue .store-chip { color: #1656a3; background: #eef5ff; }
+    .store-group.green .store-chip { color: #087f5b; background: #eaf8f1; }
+    .store-group.purple .store-chip { color: #6f42a1; background: #f5edff; }
+    .store-group.orange .store-chip { color: #8a5700; background: #fff4d6; }
     .top-button { position: fixed; right: 16px; bottom: 16px; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--accent); color: white; text-decoration: none; box-shadow: 0 4px 14px rgba(24,42,74,.26); }
     @media (min-width:720px) { .summary { grid-template-columns: repeat(4,minmax(0,1fr)); } }
     @media (max-width:820px) { .stay-grid { grid-template-columns: 1fr; } }
@@ -256,7 +268,20 @@
       <div class="items">
         <article class="item"><div class="topline"><span class="time">早上</span><span class="what">北野異人館街</span></div><p class="note">由三宮往山側步行上坡，逛風見雞館、萌黃之館一帶的洋館與坡道街景。風見雞館開放 9:00–17:00（每月第 3 個週二休，11/4 有開）。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kitano+Ijinkan+Kobe" target="_blank" rel="noreferrer">Google Maps</a></div></article>
         <article class="item"><div class="topline"><span class="time">中午</span><span class="what">北野・三宮午餐</span></div><p class="note">下坡走回三宮，在北野坂或三宮一帶吃午餐；吃輕一點，留胃給晚上的鐵板燒。</p></article>
-        <article class="item"><div class="topline"><span class="time">下午</span><span class="what">生田神社・三宮中心街逛街</span></div><p class="note">先參拜生田神社，再逛三宮中心街、Tor Road（鬼塚虎、KIDDY LAND 三宮店都在這一帶）。想逛 umie／KIDDY LAND 神戶店的話，要在晚餐前搭 JR 到神戶站先逛，商店大多 20:00 關。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Ikuta+Shrine" target="_blank" rel="noreferrer">生田神社 Google Maps</a></div></article>
+        <article class="item"><div class="topline"><span class="time">13:00–13:45</span><span class="what">生田神社</span></div><p class="note">參拜生田神社（緣結びの神様），從三宮站步行約 5 分鐘。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Ikuta+Shrine" target="_blank" rel="noreferrer">生田神社 Google Maps</a></div></article>
+        <article class="item"><div class="topline"><span class="time">13:45–17:15</span><span class="what">三宮・元町逛街</span></div><p class="note">從生田神社往南走到三宮中心街，再往西逛到元町，最後回三宮站前的神戶阪急；元町離飯店很近，可以先把戰利品放回飯店再出門。17:15 前往幸だるま。</p>
+          <div class="shopping-block">
+            <div class="topline"><span class="time">Shopping</span><span class="what">🛍️ 三宮・元町商圈（Shopping）</span></div>
+            <p class="note">📍 三宮中心街到元町商店街一路相連，有屋頂不怕雨。⏰ 建議停留約 3.5 小時；多數店家 20:00 關門。</p>
+            <ul class="shopping-list">
+              <li class="store-group blue"><strong class="store-group-title">🏬 三宮中心街</strong><span class="store-label">推薦店家</span><div class="store-links"><a class="store-chip" href="https://www.google.com/maps/search/?api=1&amp;query=Onitsuka+Tiger+KOBE+%E4%B8%89%E5%AE%AE%E7%94%BA2-10-21" target="_blank" rel="noreferrer">Onitsuka Tiger 神戶</a><a class="store-chip" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%AD%E3%83%87%E3%82%A4%E3%83%A9%E3%83%B3%E3%83%89+%E4%B8%89%E5%AE%AE%E5%BA%97" target="_blank" rel="noreferrer">KIDDY LAND 三宮店</a><a class="store-chip" href="https://www.google.com/maps/search/?api=1&amp;query=GU+%E7%A5%9E%E6%88%B8%E4%B8%89%E5%AE%AE" target="_blank" rel="noreferrer">GU</a></div></li>
+              <li class="store-group green"><strong class="store-group-title">🏬 Grace 神戶大樓（グレース神戸ビル）</strong><span class="store-label">推薦店家</span><div class="store-links"><a class="store-chip" href="https://maps.app.goo.gl/BEmLQAqLCWwM3YEw8" target="_blank" rel="noreferrer">3COINS 神戸店（1F）</a><a class="store-chip" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B6%E3%83%BB%E3%83%80%E3%82%A4%E3%82%BD%E3%83%BC+%E4%B8%89%E5%AE%AE%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E8%A1%97%E5%BA%97" target="_blank" rel="noreferrer">大創 DAISO（6F，營業到 22:00）</a></div></li>
+              <li class="store-group purple"><strong class="store-group-title">🏬 元町商店街（VEGA 大樓）</strong><span class="store-label">推薦店家</span><div class="store-links"><a class="store-chip" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A6%E3%83%8B%E3%82%AF%E3%83%AD+%E5%85%83%E7%94%BA%E5%BA%97+VEGA" target="_blank" rel="noreferrer">UNIQLO 元町店（B1–4F）</a></div></li>
+              <li class="store-group orange"><strong class="store-group-title">🏬 神戶阪急（Kobe Hankyu）</strong><span class="store-label">推薦店家</span><div class="store-links"><a class="store-chip" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%84%A1%E5%8D%B0%E8%89%AF%E5%93%81+%E7%A5%9E%E6%88%B8%E9%98%AA%E6%80%A5" target="_blank" rel="noreferrer">無印良品 MUJI（新館 5–6F，神戶市最大級）</a></div></li>
+            </ul>
+          </div>
+          <p class="note">想逛 umie／KIDDY LAND 神戶店的話，要在晚餐前搭 JR 到神戶站先逛，商店大多 20:00 關。</p>
+        </article>
         <article class="item"><div class="topline"><span class="time reserved">17:30–19:30</span><span class="what">鐵板燒 幸だるま・神戶牛夏多布里昂 <span class="pending">⚠️ 尚未訂位</span></span></div><p class="note">「幸コース」優秀賞神戶牛極上夏多布里昂 ¥16,980／人（2 人 ¥33,960），午晚同價、數量限定。JR 三之宮站步行約 1 分鐘，17:15 前到附近即可。還沒訂位，記得先在一休預約，並確認 11/4 有營業、夏多布里昂克數、是否含稅與服務費。</p><div class="links"><a class="btn" href="https://tabelog.com/tw/hyogo/A2801/A280101/28070218/party/248435032/" target="_blank" rel="noreferrer">Tabelog 查看／訂位</a></div></article>
         <article class="item"><div class="topline"><span class="time">19:30–21:30</span><span class="what">美利堅公園・神戶港塔・Harborland 夜景</span></div><p class="note">從三宮步行約 20–25 分鐘到美利堅公園（或 JR 搭一站到元町再走約 10 分鐘），看 BE KOBE 與港塔夜景。神戶港塔營業到 23:00（入場到 22:30），可以上展望台或屋上甲板看夜景。再走到 Harborland／umie MOSAIC 海側看港灣夜景，之後步行回飯店泡湯。</p><p class="note"><strong>建議拍照點：</strong>港塔＋海洋博物館＋東方飯店的港灣全景，從對岸 Harborland 的高濱岸壁或 MOSAIC 海側露台往美利堅公園方向拍；這天是晚餐後才到港邊，拍的是全黑的夜景版本。BE KOBE 字樣在美利堅公園內。</p><div class="links"><a class="btn" href="https://maps.app.goo.gl/EzjVC6xNgg8nNSsUA" target="_blank" rel="noreferrer">📷 港灣全景拍照點（高濱岸壁）</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=BE+KOBE+%E3%83%A2%E3%83%8B%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88+%E3%83%A1%E3%83%AA%E3%82%B1%E3%83%B3%E3%83%91%E3%83%BC%E3%82%AF" target="_blank" rel="noreferrer">📷 BE KOBE</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Meriken+Park+Kobe" target="_blank" rel="noreferrer">美利堅公園 Google Maps</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kobe+Harborland+umie+MOSAIC" target="_blank" rel="noreferrer">Harborland Google Maps</a></div></article>
       </div>
