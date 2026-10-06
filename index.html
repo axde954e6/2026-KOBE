@@ -136,6 +136,9 @@
     .flight-card .time { min-width: 0; padding: 5px 10px; border-radius: 999px; background: #b3261e; color: #fff3d6; font-size: 1rem; }
     .flight-no { display: inline-flex; margin-left: 8px; padding: 3px 9px; border: 2px solid #b3261e; border-radius: 8px; color: #b3261e; font-size: .92rem; white-space: nowrap; }
     .note { margin: 6px 0 0; color: var(--muted); font-size: .93rem; }
+    .steps { margin: 8px 0 0; padding-left: 1.4em; color: var(--muted); font-size: .93rem; }
+    .steps li { margin: 4px 0; }
+    .steps strong { color: var(--night); }
     .stop-list { margin-top: 12px; border-top: 1px solid var(--line); }
     .stop { display: grid; grid-template-columns: 82px minmax(0,1fr); gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
     .stop:last-child { padding-bottom: 0; border-bottom: 0; }
@@ -292,7 +295,7 @@
       <p class="route">元町 → 三宮 → 神戶機場 → 桃園</p>
       <div class="meta-row"><span class="tag city">回程日</span><span class="tag">JX1835</span><span class="tag">神戶機場</span></div>
       <div class="items">
-        <article class="item"><div class="topline"><span class="time">09:00 前</span><span class="what">Dormy Inn 神戶元町退房</span></div><p class="note">元町 → 三宮轉 Port Liner 到神戶機場，約 40 分鐘；目標 10:00 前抵達機場，報到後再逛伴手禮。</p></article>
+        <article class="item"><div class="topline"><span class="time">09:20–09:30</span><span class="what">Dormy Inn 神戶元町退房</span></div><p class="note">元町 → 三宮轉 Port Liner 到神戶機場，約 40 分鐘。因免稅新制需在機場辦理海關確認，建議 10:00 前抵達神戶機場；9:20–9:30 從飯店出發，早餐 9:00 前吃完（平日早餐 6:30–9:00）。有免稅品要託運的話，先到海關確認再去報到託運。</p></article>
         <article class="item flight-card"><div class="topline"><span class="time">12:45–15:05</span><span class="what">搭乘飛機 <span class="flight-no">✈ JX1835</span></span></div><p class="note">神戶機場第二航廈出發，15:05 抵達桃園第一航廈。</p><div class="links"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kobe+Airport" target="_blank" rel="noreferrer">神戶機場 Google Maps</a></div></article>
       </div>
     </section>
@@ -302,6 +305,15 @@
       <div class="items">
         <article class="item"><strong>航班</strong><p class="note">去程 JX1834 桃園 08:20 → 神戶 11:45；回程 JX1835 神戶 12:45 → 桃園 15:05。11/1 上摩耶山前先看天氣與即時影像。</p></article>
         <article class="item"><strong>行李與網路</strong><p class="note">確認行李額度、旅遊保險、網卡與離線地圖。</p></article>
+        <article class="item"><strong>🧾 日本免稅新制（2026/11/1 起：先付後退）</strong><p class="note">本趟 11/1 入境，所有購物都適用新制——結帳先付含稅價，出境時海關確認後才退稅。</p>
+          <ol class="steps">
+            <li><strong>出發前：</strong>到 Visit Japan Web 填護照資料、申請免稅 QR Code，結帳時給店家掃。</li>
+            <li><strong>購物時：</strong>同店同天未稅滿 ¥5,000 才能免稅；先付含稅價，信用卡額度抓預計購物金額 × 1.15 以上。</li>
+            <li><strong>購物後：</strong>保留收據，免稅品先不要拆封、使用（出境可能抽查）。</li>
+            <li><strong>出境時：</strong>在神戶機場「託運行李前」先完成海關確認，退款多為信用卡刷退，需數個工作天入帳；部分店家會扣手續費，實拿可能少於 10%。</li>
+          </ol>
+          <div class="links"><a class="btn" href="https://vjw-lp.digital.go.jp/zh-hant/" target="_blank" rel="noreferrer">Visit Japan Web</a><a class="btn" href="https://www.mlit.go.jp/kankocho/tax-free/" target="_blank" rel="noreferrer">觀光廳 免稅制度說明</a></div>
+        </article>
       </div>
     </section>
   </main>
